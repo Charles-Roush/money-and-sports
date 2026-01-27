@@ -1,1 +1,1 @@
-# sports_vs_money
+# does money make a sports team win?
