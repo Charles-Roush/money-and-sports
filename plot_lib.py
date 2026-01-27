@@ -17,9 +17,7 @@ def safe_filename(s: str) -> str:
     return re.sub(r'[<>:"/\\|?*\n\r]+', '_', s).strip()
 
 
-# -------------------------
-# Math / fit helpers
-# -------------------------
+
 def fit_poly(x_vals, y_vals, degree=1):
     """
     Fit polynomial of given degree using normal equations.

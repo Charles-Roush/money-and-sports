@@ -1,4 +1,4 @@
-year,team,w,l,wpct,salary
+year,team,w,l,w_pct,salary
 1986,New York Mets,108,54,0.667,13597780
 1986,Philadelphia Phillies,86,75,0.534,11715166
 1986,St. Louis Cardinals,79,82,0.491,9481677
@@ -28,7 +28,7 @@ year,team,w,l,wpct,salary
 1988,Montreal Expos,81,81,0.5,9452333
 1988,Chicago Cubs,77,86,0.475,12849333
 1988,St. Louis Cardinals,76,86,0.469,14027500
-1988,Philadelphia Phillies,65,96,0.0404,13248000
+1988,Philadelphia Phillies,65,96,0.404,13248000
 1988,Los Angeles Dodgers,94,67,0.584,16412515
 1988,Cincinnati Reds,87,74,0.54,9998833
 1988,San Diego Padres,83,78,0.516,10978168
