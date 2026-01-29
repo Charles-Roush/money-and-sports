@@ -11,6 +11,17 @@ import matplotlib as mpl
 style = matplotx.styles.duftify(matplotx.styles.dracula)
 mpl.style.use(style)
 
+# Set style
+font = {'weight' : 'bold',
+        'size'   : 25}
+
+mpl.rc('font', **font)
+
+mpl.rcParams['text.color'] = 'white'
+mpl.rcParams['axes.labelcolor'] = 'white'
+mpl.rcParams['xtick.color'] = 'white'
+mpl.rcParams['ytick.color'] = 'white'
+mpl.rcParams['axes.edgecolor'] = 'white'
 
 def safe_filename(s: str) -> str:
     """Remove characters that are invalid in filenames."""
@@ -167,7 +178,7 @@ class PolyBestFitStdPlot(Plot):
 # SubPlot manager
 # -------------------------
 class SubPlot:
-    def __init__(self, plot_groups, rows=None, columns=None, size=(21, 9)):
+    def __init__(self, plot_groups, rows=None, columns=None, size=(16, 12)):
         """
         plot_groups: list of lists of Plot objects.
         Each inner list is drawn on the same subplot.
