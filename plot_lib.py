@@ -62,12 +62,14 @@ def eval_poly(coeffs, xs):
 # Plot classes
 # -------------------------
 class Plot:
-    def __init__(self, x_vals, y_vals=None, title="", x_title="", y_title=""):
+    def __init__(self, x_vals, y_vals=None, title="", x_title="", y_title="", label=None):
         self.x_vals = x_vals
         self.y_vals = y_vals
         self.title = title
         self.x_title = x_title
         self.y_title = y_title
+        self.label = label
+
 
     def plot(self, ax):
         """Set labels and call the actual plot function"""
@@ -86,17 +88,17 @@ class Plot:
 class LinePlot(Plot):
     def _plot(self, ax):
         if self.x_vals is not None:
-            ax.plot(self.x_vals, self.y_vals)
+            ax.plot(self.x_vals, self.y_vals, label=self.label)
         else:
-            ax.plot(self.y_vals)
+            ax.plot(self.y_vals, label=self.label)
 
 
 class ScatterPlot(Plot):
     def _plot(self, ax):
         if self.y_vals is not None:
-            ax.scatter(self.x_vals, self.y_vals)
+            ax.scatter(self.x_vals, self.y_vals, label=self.label)
         else:
-            ax.scatter(range(len(self.x_vals)), self.x_vals)
+            ax.scatter(range(len(self.x_vals)), self.x_vals, label=self.label)
 
 
 class HistPlot(Plot):
@@ -105,7 +107,7 @@ class HistPlot(Plot):
         self.bins = bins
 
     def _plot(self, ax):
-        ax.hist(self.x_vals, bins=self.bins)
+        ax.hist(self.x_vals, bins=self.bins, label=self.label)
 
 
 class PiePlot(Plot):
@@ -114,12 +116,12 @@ class PiePlot(Plot):
         self.labels = labels
 
     def _plot(self, ax):
-        ax.pie(self.x_vals, labels=self.labels)
+        ax.pie(self.x_vals, labels=self.labels, label=self.label)
 
 
 class BoxPlot(Plot):
     def _plot(self, ax):
-        ax.boxplot(self.x_vals)
+        ax.boxplot(self.x_vals, label=self.label)
 
 
 class PolyBestFitPlot(Plot):
@@ -144,7 +146,7 @@ class PolyBestFitPlot(Plot):
         xs = np.linspace(x1, x2, 300)
         ys = eval_poly(self.coeffs, xs)
 
-        ax.plot(xs, ys, linestyle='--')
+        ax.plot(xs, ys, linestyle='--', label=self.label)
 
 
 class PolyBestFitStdPlot(Plot):
@@ -171,7 +173,7 @@ class PolyBestFitStdPlot(Plot):
 
         ax.plot(xs, ys, linestyle='--')
         ax.plot(xs, ys + self.std, linestyle=':', color='gray')
-        ax.plot(xs, ys - self.std, linestyle=':', color='gray')
+        ax.plot(xs, ys - self.std, linestyle=':', color='gray', label=self.label)
 
 
 # -------------------------
@@ -218,7 +220,8 @@ class SubPlot:
             self.fig.delaxes(ax)
 
         plt.tight_layout()
-
+        plt.legend()
+        
         file_title = 'no_title'
         if self.plot_groups and self.plot_groups[0] and getattr(self.plot_groups[0][0], "title", ""):
             file_title = safe_filename(self.plot_groups[0][0].title)
