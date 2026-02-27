@@ -9,7 +9,8 @@ def get_basic_stats(data):
             'var': np.var(data),
             'std': np.std(data),
             'min': min(data),
-            'max': max(data)
+            'max': max(data),
+            'len': len(data)
     }
     return stats
 
